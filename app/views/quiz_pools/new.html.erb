@@ -1,0 +1,39 @@
+<div style='width: 550px; margin: 20px auto; '>
+  <div class='form-title'>New Quiz Pool</div>
+  <%= semantic_form_for @quiz_pool do |quiz_pool_form| %>
+    <%= quiz_pool_form.inputs do %>
+      <%= quiz_pool_form.input :title %>
+      <%= quiz_pool_form.input :description %>
+      <li>
+        <%= quiz_pool_form.semantic_fields_for :quiz_pool_questions, {
+          row_removable: true, 
+          row_addable: true,
+          min_entry: 1, 
+          max_entry: 10,
+          new_record_link_label: "+ question"
+        } do |quiz_pool_question_builder| %>
+          <%= quiz_pool_question_builder.inputs do %>
+            <%= quiz_pool_question_builder.input :description %>
+            <%= quiz_pool_question_builder.input :score %>
+            <li>
+              <%= quiz_pool_question_builder.semantic_fields_for :quiz_pool_question_options, {
+                display_type: "table", 
+                row_removable: true, 
+                row_addable: true, 
+                min_entry: 1, 
+                max_entry: 5,
+                new_record_link_label: "+ answer"                
+              } do |quiz_pool_option_builder| %>
+                <%= quiz_pool_option_builder.inputs do %>
+                  <%= quiz_pool_option_builder.input :description, as: :string %>
+                  <%= quiz_pool_option_builder.input :is_correct, :wrapper_html => {:style => "width: 60px;"} %>
+                <% end %>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+    <%= quiz_pool_form.submit class: "submit-button" %>
+  <% end %>
+</div>

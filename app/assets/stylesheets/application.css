@@ -1,0 +1,38 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require base 
+ *= require formtastic 
+ *= require formnestic/formnestic.css
+ */
+
+div.form-title {
+  font-weight: 500;
+  color: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.formtastic input.submit-button {
+  display: block;
+  background: #68898E;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  border: 0 none;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
