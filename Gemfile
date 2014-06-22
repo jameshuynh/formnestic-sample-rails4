@@ -38,5 +38,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'formnestic', path: '../formnestic'
+gem 'formnestic'
+
 gem 'thin'
+
+ruby "2.1.2"

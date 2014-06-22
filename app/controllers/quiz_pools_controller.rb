@@ -1,7 +1,16 @@
 class QuizPoolsController < ApplicationController
+  
+  def index
+    @quiz_pools = QuizPool.all
+  end
+  
   def new
     @quiz_pool = QuizPool.new
     @quiz_pool.quiz_pool_questions = [QuizPoolQuestion.new, QuizPoolQuestion.new]
+  end
+  
+  def edit
+    @quiz_pool = QuizPool.find(params[:id])    
   end
   
   def create
@@ -13,6 +22,21 @@ class QuizPoolsController < ApplicationController
     end
   end
   
+  def update
+    @quiz_pool = QuizPool.find(params[:id])
+    if @quiz_pool.update_attributes(quiz_pool_params)
+      redirect_to quiz_pools_url
+    else
+      render :action => :edit
+    end
+  end
+  
+  def destroy
+    @quiz_pool = QuizPool.find(params[:id])
+    @quiz_pool.destroy
+    redirect_to quiz_pools_url
+  end
+  
   private
   
   def quiz_pool_params
@@ -20,10 +44,14 @@ class QuizPoolsController < ApplicationController
       :quiz_pool_questions_attributes => [
         :description,
         :score,
+        :_destroy,
+        :id,
         {
           :quiz_pool_question_options_attributes => [
             :description,
-            :is_correct
+            :is_correct,
+            :_destroy,
+            :id
           ]
         }
       ]

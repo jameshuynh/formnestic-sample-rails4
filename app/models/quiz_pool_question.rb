@@ -3,5 +3,5 @@ class QuizPoolQuestion < ActiveRecord::Base
   
   validates :description, presence: true
   has_many :quiz_pool_question_options
-  accepts_nested_attributes_for :quiz_pool_question_options
+  accepts_nested_attributes_for :quiz_pool_question_options, allow_destroy: true
 end

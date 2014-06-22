@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :quiz_pools
+  resources :quiz_pools do
+    member do
+      get :result
+      get :preview
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -55,5 +60,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  root :to => 'quiz_pools#new'
+  root :to => 'quiz_pools#index'
 end
