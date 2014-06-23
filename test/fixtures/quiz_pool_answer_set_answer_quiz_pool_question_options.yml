@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quiz_pool_answer_set_answer_id: 1
+  quiz_pool_question_option_id: 1
+
+two:
+  quiz_pool_answer_set_answer_id: 1
+  quiz_pool_question_option_id: 1

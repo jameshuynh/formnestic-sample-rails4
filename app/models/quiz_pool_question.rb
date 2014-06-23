@@ -1,7 +1,7 @@
 class QuizPoolQuestion < ActiveRecord::Base
-  # attr_accessible :description, :quiz_pool_id, :score, :quiz_pool_question_options_attributes
-  
   validates :description, presence: true
   has_many :quiz_pool_question_options
+  has_many :correct_quiz_pool_question_options, -> { where(is_correct: true) }, class_name: "QuizPoolQuestionOption", foreign_key: "quiz_pool_question_id" 
+  
   accepts_nested_attributes_for :quiz_pool_question_options, allow_destroy: true
 end

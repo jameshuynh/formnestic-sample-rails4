@@ -1,0 +1,5 @@
+<div style='margin: 10px 0;'>
+  <a href='<%= result_quiz_pool_url(@quiz_pool) %>' class='btn btn-warning'><span class='icon-back'>Back</span></a>
+  <hr style='margin: 7px 0'/>
+  <%= render :partial => "take_quiz_form", locals: {hide_submit_button: true} %>
+</div>

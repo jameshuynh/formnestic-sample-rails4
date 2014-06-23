@@ -1,8 +1,10 @@
-<div style='padding: 10px; margin: 20px auto; '>
-  <%= semantic_form_for @quiz_pool do |quiz_pool_form| %>
+<div style='margin: 10px 0;'>
+  <a href='/quiz_pools' class='btn btn-warning'><span class='icon-back'>Back</span></a>
+  <hr style='margin: 7px 0'/>
+  <%= semantic_form_for @quiz_pool, html: {:style => "margin-top: 10px;"} do |quiz_pool_form| %>
     <%= quiz_pool_form.inputs do %>
-      <%= quiz_pool_form.input :title %>
-      <%= quiz_pool_form.input :description %>
+      <%= quiz_pool_form.input :title, input_html: {class: "form-control"}  %>
+      <%= quiz_pool_form.input :description, input_html: {class: "form-control", style: 'height: 80px;'} %>
       <li>
         <%= quiz_pool_form.semantic_fields_for :quiz_pool_questions, {
           row_removable: true, 
@@ -12,8 +14,8 @@
           new_record_link_label: "+ question"
         } do |quiz_pool_question_builder| %>
           <%= quiz_pool_question_builder.inputs do %>
-            <%= quiz_pool_question_builder.input :description %>
-            <%= quiz_pool_question_builder.input :score %>
+            <%= quiz_pool_question_builder.input :description, input_html: {class: "form-control", style: 'height: 80px;'} %>
+            <%= quiz_pool_question_builder.input :score, input_html: {class: "form-control"} %>
             <li>
               <%= quiz_pool_question_builder.semantic_fields_for :quiz_pool_question_options, {
                 display_type: "table", 
@@ -24,8 +26,8 @@
                 new_record_link_label: "+ answer"                
               } do |quiz_pool_option_builder| %>
                 <%= quiz_pool_option_builder.inputs do %>
-                  <%= quiz_pool_option_builder.input :description, as: :string %>
-                  <%= quiz_pool_option_builder.input :is_correct, :wrapper_html => {:style => "width: 60px;"} %>
+                  <%= quiz_pool_option_builder.input :description, as: :string, input_html: {class: "form-control"} %>
+                  <%= quiz_pool_option_builder.input :is_correct, :wrapper_html => {:style => "width: 80px;"} %>
                 <% end %>
               <% end %>
             </li>
@@ -33,6 +35,8 @@
         <% end %>
       </li>
     <% end %>
-    <%= quiz_pool_form.submit class: "submit-button" %>
+    <% if !defined?(hide_submit_button) %>
+      <%= quiz_pool_form.submit 'Save Quiz Pool', class: "submit-button" %>
+    <% end %>
   <% end %>
 </div>

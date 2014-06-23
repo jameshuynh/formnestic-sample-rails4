@@ -1,25 +1,22 @@
-<h2 class='page-title'>
-  <span class='page-title-content'>Quiz Pools</span>
-  <%= link_to "New Quiz Pool", new_quiz_pool_url, class: "right page-title-link" %>
-</h2>
-<table class='listing-table'>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan='4' style='text-align: center;'>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @quiz_pools.each do |quiz_pool| %>
+<div class='row'>
+  <table class='listing-table'>
+    <thead>
       <tr>
-        <td><%= quiz_pool.title %></td>
-        <td><%= quiz_pool.description %></td>
-        <td><%= link_to 'Preview', quiz_pool %></td>
-        <td><%= link_to 'Quiz Results', result_quiz_pool_url(quiz_pool) %></td>
-        <td><%= link_to 'Edit', edit_quiz_pool_url(quiz_pool) %></td>
-        <td><%= link_to 'Remove', quiz_pool_url(quiz_pool), method: :delete %></td>
+        <th>Title</th>
+        <th style='text-align: center; width: 180px;'>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @quiz_pools.each do |quiz_pool| %>
+        <tr>
+          <td><%= link_to quiz_pool.title, take_quiz_quiz_pool_url(quiz_pool), target: "_blank" %></td>
+          <td style='text-align: center;'>
+            <%= link_to 'Result', result_quiz_pool_url(quiz_pool), class: "btn btn-xs btn-success" %>
+            <%= link_to 'Edit', edit_quiz_pool_url(quiz_pool), class: "btn btn-xs btn-primary" %>
+            <%= link_to 'Remove', quiz_pool_url(quiz_pool), method: :delete, class: "btn btn-xs btn-danger", "data-confirm" => "Are you sure?" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

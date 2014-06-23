@@ -1,0 +1,22 @@
+<h2><%= @quiz_pool.title %></h2>
+<span class='quiz-pool-description'><%= @quiz_pool.description %></span>
+<%= semantic_form_for @quiz_pool_answer_set, url: submit_quiz_answers_quiz_pool_url(@quiz_pool), class: "quiz-pool-answer-set" do |quiz_pool_answer_set_builder| %>
+  <%= quiz_pool_answer_set_builder.inputs do %>
+    <%= quiz_pool_answer_set_builder.input :quiz_taker_name, input_html: {class: "form-control"}  %>
+    <li class='quiz-pool-answers-container'>
+      <% counter = 0 %>
+      <%= quiz_pool_answer_set_builder.semantic_fields_for :quiz_pool_answer_set_answers do |quiz_pool_answer_builder| %>
+        <%= quiz_pool_answer_builder.inputs do %>
+          <li class='quiz-pool-question-show'>
+            <div class='formnestic-li-fieldset-legend'><b style='color: #FCFAC7;'>Question #<%= counter += 1 %>:</b> <%= quiz_pool_answer_builder.object.quiz_pool_question.description %></div>
+          </li>
+          <%= quiz_pool_answer_builder.input :quiz_pool_question_id, as: :hidden %>
+          <%= quiz_pool_answer_builder.input :quiz_pool_question_option_ids, collection: quiz_pool_answer_builder.object.quiz_pool_question.quiz_pool_question_options.collect{|x| [x.description, x.id]}, as: :check_boxes, label: "Your Answer" %>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+  <% if defined?(hide_submit_button) == false %>
+    <%= quiz_pool_answer_set_builder.submit 'Submit', class: "submit-button", style: 'margin-top: 0;' %>
+  <% end %>
+<% end %>

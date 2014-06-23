@@ -1,0 +1,35 @@
+<div class='row'>  
+  <div class='clearfix' style='margin: 10px; margin-bottom: 0;'>
+    <div style='float: left;'>
+      <a href='/quiz_pools' class='btn btn-warning'><span class='icon-back'>Back</span></a>
+    </div>
+    <div style='float: right;'>
+      <a href="<%= answer_sets_csv_quiz_pool_url(@quiz_pool) %>" class='btn btn-success'>CSV Result</a>
+    </div>
+  </div>
+  <hr style='margin: 7px 0'/>
+  <table class='listing-table'>
+    <thead>
+      <tr>
+        <th>No. </th>
+        <th>Taken At</th>
+        <th>Taker's Name</th>
+        <th style='text-align: right;'>Score</th>
+        <th style='text-align: center; width: 120px;'>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @quiz_pool.quiz_pool_answer_sets.each_with_index do |quiz_pool_answer_set, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= quiz_pool_answer_set.created_at.strftime("%d-%m-%Y %H:%M:%S UTC") %></td>
+          <td><%= quiz_pool_answer_set.quiz_taker_name %></td>
+          <td style='text-align: right;'><%= quiz_pool_answer_set.score %> (<%= quiz_pool_answer_set.correct_percentage * 100 %>%)</td>
+          <td style='text-align: center;'>
+            <%= link_to "View Answer", view_quiz_answer_quiz_pool_url(@quiz_pool) + "?quiz_pool_answer_set_id=#{quiz_pool_answer_set.id}", class: "btn btn-xs btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
