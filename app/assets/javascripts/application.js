@@ -15,4 +15,15 @@
 //= require bootstrap
 //= require turbolinks
 //= require formnestic/formnestic.js
+//= require_self
 
+function stopSpinner() {
+  $("html").css("cursor", "auto");
+}
+
+function startSpinner() {
+  $("html").css("cursor", "progress");
+}
+
+$(document).on("page:fetch", startSpinner);
+$(document).on("page:receive", stopSpinner);
