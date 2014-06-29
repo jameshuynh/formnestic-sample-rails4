@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        quiz_pool_question:
+          attributes:
+            quiz_pool_question_options:              
+              at_least_one_correct_answer: must have at least one correct answer

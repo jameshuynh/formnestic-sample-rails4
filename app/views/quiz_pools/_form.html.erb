@@ -1,7 +1,9 @@
 <div style='margin: 10px 0;'>
+  <%= %>
   <a href='/quiz_pools' class='btn btn-warning'><span class='icon-back'>Back</span></a>
   <hr style='margin: 7px 0'/>
   <%= semantic_form_for @quiz_pool, html: {:style => "margin-top: 10px;"} do |quiz_pool_form| %>
+    <%= render '/shared/error_messages', object: quiz_pool_form.object %>
     <%= quiz_pool_form.inputs do %>
       <%= quiz_pool_form.input :title, input_html: {class: "form-control"}  %>
       <%= quiz_pool_form.input :description, input_html: {class: "form-control", style: 'height: 80px;'} %>
@@ -17,6 +19,9 @@
             <%= quiz_pool_question_builder.input :description, input_html: {class: "form-control", style: 'height: 80px;'} %>
             <%= quiz_pool_question_builder.input :score, input_html: {class: "form-control"} %>
             <li>
+              <% if quiz_pool_question_builder.object.errors[:quiz_pool_question_options].length > 0 %>
+                <div class='formnestic-table-errors'><%= quiz_pool_question_builder.object.errors[:quiz_pool_question_options].join %></div>
+              <% end %>
               <%= quiz_pool_question_builder.semantic_fields_for :quiz_pool_question_options, {
                 display_type: "table", 
                 row_removable: true, 

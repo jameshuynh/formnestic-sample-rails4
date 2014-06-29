@@ -116,16 +116,21 @@ div.formnestic-nested-model-container fieldset.formnestic-li-fieldset div.formne
   right: 6px;
 }
 
+
+table.formnestic-table-inputs tr.formnestic-table-no-border {
+  border: 0 none;
+}
 table.formnestic-table-inputs td {
   background: #fff;
   &:last-child {
     border-right: 1px solid #ccc;
   }
-  
+
   &:first-child {
     border-left: 1px solid #ccc;
   }
 }
+
 
 div.formnestic-nested-model-container fieldset.formnestic-li-fieldset div.formnestic-li-fieldset-legend {
   margin: -10px;
@@ -259,12 +264,42 @@ span.quiz-pool-description {
   margin-left: 26%;
 }
 
-table.formnestic-table-inputs thead th  {
-  &:first-child {
-    border-left: 1px solid #666;
-  }
-  &:last-child {
-    border-right: 1px solid #666;
-  }
+table.formnestic-table-inputs thead tr {
+//  &:first-child {
+//    border-left: 1px solid #666;
+//  }
+//  &:last-child {
+//    border-right: 1px solid #666;
+//  }
   
+}
+
+div#error_explanation {
+  background: #BA5353;
+  color: #fff;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  div.error-title {
+    padding: 0;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-left: -10px;
+    margin-top: -10px;
+    margin-right: -10px;
+    padding: 10px;
+    background: #AD2020;
+    border-radius: 5px 5px 0 0;
+  }
+  ul {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+}
+
+div.formnestic-table-errors {
+  background:#BA5353; 
+  color: #fff; 
+  padding: 5px; 
+  text-align: center;
 }
