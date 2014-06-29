@@ -16,7 +16,7 @@
       <% end %>
     </li>
   <% end %>
-  <% if defined?(hide_submit_button) == false %>
+  <% if defined?(hide_submit_button).nil? %>
     <%= quiz_pool_answer_set_builder.submit 'Submit', class: "submit-button", style: 'margin-top: 0;' %>
   <% end %>
 <% end %>
