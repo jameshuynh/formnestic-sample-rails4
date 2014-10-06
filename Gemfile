@@ -52,5 +52,6 @@ gem 'formtastic', '2.3.0.rc3'
 # gem 'formnestic', path: '../formnestic'
 
 gem 'thin'
-
+gem 'newrelic_rpm'
 ruby "2.1.2"
+
